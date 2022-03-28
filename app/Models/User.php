@@ -29,6 +29,6 @@ class User extends Authenticatable
     ];
 
     public function AnimalList(){
-        return $this->hasMany(AnimalCards::class);
+        return $this->hasMany(AnimalCard::class);
     }
 }
