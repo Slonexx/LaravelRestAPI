@@ -12,15 +12,15 @@ class AuthController extends Controller
     public function register(Request $request) {
         $fields = $request->validate([
             'name' => 'required|string',
+            'phone' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'phone' => 'required|string|unique:users,phone',
             'password' => 'required|string|confirmed'
         ]);
 
         $user = User::create([
             'name' => $fields['name'],
-            'email' => $fields['email'],
             'phone' => $fields['phone'],
+            'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
 
@@ -60,7 +60,7 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
-    public function logout(Request $request) {
+    public function logout() {
         auth()->user()->tokens()->delete();
 
         return [
