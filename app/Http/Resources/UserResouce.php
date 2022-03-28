@@ -13,8 +13,8 @@ class UserResouce extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'phone' => $this->phone,
-            'password' => $this->password,
             'email' => $this->email,
+            'password' => $this->password,
             'animal_card' => AnimalResouce::collection($this->AnimalList),
         ];
     }
