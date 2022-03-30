@@ -13,7 +13,7 @@ class TimeOfReceiptController extends Controller
     public function index()
     {
         return response()->json([
-            'Doctor' => TimeOfReceiptResource::collection(TimeOfReceipt::all())
+            'Time' => TimeOfReceiptResource::collection(TimeOfReceipt::all())
         ],200);
     }
 
