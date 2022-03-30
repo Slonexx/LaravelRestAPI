@@ -4,16 +4,17 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ClinicResource extends JsonResource
+class DoctorResource extends JsonResource
 {
+
     public function toArray($request)
     {
         return [
             'id' => $this->id,
-            'Name_Clinic' => $this->Name_Clinic,
-            'Address' => $this->Address,
+            'Name_Doctor' => $this->Name_Doctor,
+            'Speciality' => $this->Speciality,
             'URL_Picture' => $this->URL_Picture,
-            'Doctors' => DoctorResource::collection($this->DoctorList),
+            'Clinic_id' => $this->Clinic_id,
         ];
     }
 }
