@@ -14,4 +14,8 @@ class Clinic extends Model
         'Address',
         'URL_Picture',
     ];
+
+    public function DoctorList(){
+        return $this->hasMany(Doctor::class);
+    }
 }
