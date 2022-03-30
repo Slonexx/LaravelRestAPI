@@ -6,24 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDoctorsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string('Name_Doctor');
+            $table->string('Speciality');
+            $table->string('URL_Picture');
+            $table->foreignId('Clinic_id')->constrained();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('doctors');
