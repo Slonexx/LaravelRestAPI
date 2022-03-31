@@ -14,56 +14,37 @@ use \App\Http\Controllers\API\V1\RenderServiceController;
 Route::post('/Register', [AuthController::class, 'register']);
 Route::post('/Login', [AuthController::class, 'login']);
 
-Route::get('/User', [UserController::class, 'index']);
-Route::get('/User/{id}', [UserController::class, 'show']);
+Route::apiResource('/User', UserController::class)->except(['index, show']);
 
-Route::get('/Animal',[AnimalController::class, 'index']);
-Route::get('/Animal/{id}',[AnimalController::class, 'show']);
+Route::apiResource('/Animal', AnimalController::class)->except(['index, show']);
 
-Route::get('/Clinic',[ClinicController::class, 'index']);
-Route::get('/Clinic/{id}',[ClinicController::class, 'show']);
+Route::apiResource('/Clinic', ClinicController::class)->except(['index, show']);
 
-Route::get('/Doctor',[DoctorController::class, 'index']);
-Route::get('/Doctor/{id}',[DoctorController::class, 'show']);
+Route::apiResource('/Doctor', DoctorController::class)->except(['index, show']);
 
-Route::get('/Time',[TimeOfReceiptController::class, 'index']);
-Route::get('/Time/{id}',[TimeOfReceiptController::class, 'show']);
+Route::apiResource('/Time', TimeOfReceiptController::class)->except(['index, show']);
 
-Route::get('/Service',[ServiceController::class, 'index']);
-Route::get('/Service/{id}',[ServiceController::class, 'show']);
+Route::apiResource('/Service', ServiceController::class)->except(['index, show']);
 
-Route::get('/Render',[RenderServiceController::class, 'index']);
-Route::get('/Render/{id}',[RenderServiceController::class, 'show']);
+Route::apiResource('/Render', RenderServiceController::class)->except(['index, show']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/Logout', [AuthController::class, 'logout']);
 
-    Route::put('/User/{id}', [UserController::class, 'update']);
-    Route::delete('/User/{id}', [UserController::class, 'destroy']);
+    Route::apiResource('/User', UserController::class)->except(['update, destroy']);
 
-    Route::post('/Animal',[AnimalController::class, 'store']);
-    Route::put('/Animal/{id}', [AnimalController::class, 'update']);
-    Route::delete('/Animal/{id}',[AnimalController::class, 'destroy']);
+    Route::apiResource('/Animal', AnimalController::class)->except(['store, update, destroy']);
 
-    Route::post('/Clinic',[ClinicController::class, 'store']);
-    Route::put('/Clinic/{id}',[ClinicController::class, 'update']);
-    Route::delete('/Clinic/{id}',[ClinicController::class, 'destroy']);
+    Route::apiResource('/Clinic', ClinicController::class)->except(['store, update, destroy']);
 
-    Route::post('/Doctor',[DoctorController::class, 'store']);
-    Route::put('/Doctor/{id}', [DoctorController::class, 'update']);
-    Route::delete('/Doctor/{id}', [DoctorController::class, 'destroy']);
+    Route::apiResource('/Doctor', DoctorController::class)->except(['store, update, destroy']);
 
-    Route::post('/Time',[TimeOfReceiptController::class, 'store']);
-    Route::put('/Time/{id}', [TimeOfReceiptController::class, 'update']);
-    Route::delete('/Time/{id}',[TimeOfReceiptController::class, 'destroy']);
+    Route::apiResource('/Time', TimeOfReceiptController::class)->except(['store, update, destroy']);
 
-    Route::post('/Service',[ServiceController::class, 'store']);
-    Route::put('/Service/{id}', [ServiceController::class, 'update']);
-    Route::delete('/Service/{id}', [ServiceController::class, 'destroy']);
+    Route::apiResource('/Service', ServiceController::class)->except(['store, update, destroy']);
 
-    Route::post('/Render',[RenderServiceController::class, 'store']);
-    Route::delete('/Render/{id}',[RenderServiceController::class, 'destroy']);
+    Route::apiResource('/Render', RenderServiceController::class)->except(['store, destroy']);
 });
 
 
