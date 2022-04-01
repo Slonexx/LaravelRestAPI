@@ -53,10 +53,17 @@ class RenderServiceController extends Controller
 
     public function destroy($id)
     {
-        $update = RenderServices::findOrFail($id);
-        $update->delete();
+        RenderServices::findOrFail($id)->delete();
         return [
-            'message' => 'Delete Render service'
+            'message' => 'Delete Render Services'
+        ];
+    }
+
+    public function restore($id)
+    {
+        RenderServices::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Render Services'
         ];
     }
 }

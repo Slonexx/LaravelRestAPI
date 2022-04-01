@@ -22,11 +22,13 @@ class ServiceController extends Controller
         $fields = $request->validate([
             'Name_Service' => 'required|string',
             'Descriptions' => 'required|string',
+            'Clinic_id' => 'required|string',
         ]);
 
         $store = Service::create([
             'Name_Service' => $fields['Name_Service'],
             'Descriptions' => $fields['Descriptions'],
+            'Clinic_id' => $fields['Clinic_id'],
         ]);
         return response()->json(
             [
@@ -47,11 +49,13 @@ class ServiceController extends Controller
         $fields = $request->validate([
             'Name_Service' => 'required|string',
             'Descriptions' => 'required|string',
+            'Clinic_id' => 'required|string',
         ]);
 
         $update->update([
             'Name_Service' => $fields['Name_Service'],
             'Descriptions' => $fields['Descriptions'],
+            'Clinic_id' => $fields['Clinic_id'],
         ]);
 
         return response()->json([
@@ -62,10 +66,17 @@ class ServiceController extends Controller
 
     public function destroy($id)
     {
-        $update = Service::findOrFail($id);
-        $update->delete();
+        Service::findOrFail($id)->delete();
         return [
             'message' => 'Delete Service'
+        ];
+    }
+
+    public function restore($id)
+    {
+        Service::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Service'
         ];
     }
 }

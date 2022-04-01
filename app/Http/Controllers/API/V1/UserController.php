@@ -30,12 +30,14 @@ class UserController extends Controller
         $fields = $request->validate([
             'phone' => 'required|string',
             'name' => 'required|string',
+            'URL_Picture' => 'required|string',
             'password' => 'required|string'
         ]);
 
         $update->update([
             'name' => $fields['name'],
             'phone' => $fields['phone'],
+            'URL_Picture' => $fields['URL_Picture'],
             'password' => bcrypt($fields['password'])
         ]);
 
@@ -46,7 +48,17 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $pat_update = User::findOrFail($id);
-        $pat_update->delete();
+        User::findOrFail($id)->delete();
+        return [
+            'message' => 'Delete User'
+        ];
+    }
+
+    public function restore($id)
+    {
+        User::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore User'
+        ];
     }
 }

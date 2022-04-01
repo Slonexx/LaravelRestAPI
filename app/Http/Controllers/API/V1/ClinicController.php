@@ -66,10 +66,18 @@ class ClinicController extends Controller
 
     public function destroy($id)
     {
-        $update = Clinic::findOrFail($id);
-        $update->delete();
+        Clinic::findOrFail($id)->delete();
         return [
             'message' => 'Delete Clinic'
         ];
+    }
+
+    public function restore($id)
+    {
+        Clinic::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Clinic'
+        ];
+
     }
 }

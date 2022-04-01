@@ -60,10 +60,17 @@ class TimeOfReceiptController extends Controller
 
     public function destroy($id)
     {
-        $update = TimeOfReceipt::findOrFail($id);
-        $update->delete();
+        TimeOfReceipt::findOrFail($id)->delete();
         return [
-            'message' => 'Delete animal'
+            'message' => 'Delete Time Of Receipt'
+        ];
+    }
+
+    public function restore($id)
+    {
+        TimeOfReceipt::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Time Of Receipt'
         ];
     }
 }

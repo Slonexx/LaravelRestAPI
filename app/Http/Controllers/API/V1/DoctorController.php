@@ -68,10 +68,17 @@ class DoctorController extends Controller
 
     public function destroy($id)
     {
-        $pat_update = Doctor::findOrFail($id);
-        $pat_update->delete();
+        Doctor::findOrFail($id)->delete();
         return [
-            'message' => 'Delete animal'
+            'message' => 'Delete Doctor'
+        ];
+    }
+
+    public function restore($id)
+    {
+        Doctor::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Doctor'
         ];
     }
 }

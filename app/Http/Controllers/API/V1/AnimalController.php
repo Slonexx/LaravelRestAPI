@@ -66,10 +66,18 @@ class AnimalController extends Controller
 
     public function destroy($id)
     {
-        $pat_update = AnimalCard::findOrFail($id);
-        $pat_update->delete();
+        AnimalCard::findOrFail($id)->delete();
         return [
-            'message' => 'Delete animal'
+            'message' => 'Delete Animal'
         ];
+    }
+
+    public function restore($id)
+    {
+        AnimalCard::onlyTrashed()->find($id)->restore();
+        return [
+            'message' => 'Restore Animal'
+        ];
+
     }
 }
