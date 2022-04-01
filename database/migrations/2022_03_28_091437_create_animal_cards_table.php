@@ -15,6 +15,7 @@ class CreateAnimalCardsTable extends Migration
             $table->string('Type_Animal');
             $table->string('Age_Animal',3);
             $table->foreignId('User_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,5 +23,8 @@ class CreateAnimalCardsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('animal_cards');
+        Schema::create('animal_cards', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

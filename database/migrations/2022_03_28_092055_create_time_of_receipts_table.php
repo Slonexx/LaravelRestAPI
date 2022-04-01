@@ -13,6 +13,7 @@ class CreateTimeOfReceiptsTable extends Migration
             $table->id();
             $table->date('Receipt_Date');
             $table->string('Time',10);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -20,5 +21,8 @@ class CreateTimeOfReceiptsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('time_of_receipts');
+        Schema::create('time_of_receipts', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

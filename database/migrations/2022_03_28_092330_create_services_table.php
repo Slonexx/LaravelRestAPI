@@ -13,6 +13,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('Name_Service');
             $table->string('Descriptions');
+            $table->foreignId('Clinic_id')->constrained();
             $table->timestamps();
         });
     }
@@ -20,5 +21,8 @@ class CreateServicesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('services');
+        Schema::create('services', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

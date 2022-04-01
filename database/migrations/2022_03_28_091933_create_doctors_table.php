@@ -15,6 +15,7 @@ class CreateDoctorsTable extends Migration
             $table->string('Speciality');
             $table->string('URL_Picture');
             $table->foreignId('Clinic_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,5 +23,8 @@ class CreateDoctorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('doctors');
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

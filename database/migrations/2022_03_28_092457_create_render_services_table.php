@@ -18,6 +18,7 @@ class CreateRenderServicesTable extends Migration
             $table->foreignId('Service_id')->constrained();
             $table->foreignId('Doctor_id')->constrained();
             $table->foreignId('Time_Of_Receipts_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -25,5 +26,8 @@ class CreateRenderServicesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('render_services');
+        Schema::create('render_services', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
