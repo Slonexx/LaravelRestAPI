@@ -14,6 +14,7 @@ class CreateClinicsTable extends Migration
             $table->string('Name_Clinic');
             $table->string('Address');
             $table->string('URL_Picture');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,5 +23,8 @@ class CreateClinicsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('clinics');
+        Schema::create('clinics', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
