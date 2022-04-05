@@ -14,6 +14,7 @@ use \App\Http\Controllers\API\V1\RenderServiceController;
 // Public
 Route::post('/Register', [AuthController::class, 'register']);
 Route::post('/Login', [AuthController::class, 'login']);
+Route::get('/userChangePhoto', [UserController::class, 'userChangePhoto']);
 
 Route::apiResource('/User', UserController::class)->except(['index, show']);
 
