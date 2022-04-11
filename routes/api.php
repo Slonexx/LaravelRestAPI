@@ -10,24 +10,21 @@ use \App\Http\Controllers\API\V1\ServiceController;
 use \App\Http\Controllers\API\V1\DoctorController;
 use \App\Http\Controllers\API\V1\TimeOfReceiptController;
 use \App\Http\Controllers\API\V1\RenderServiceController;
+use \App\Http\Controllers\API\V1\FileController;
 
 // Public
 Route::post('/Register', [AuthController::class, 'register']);
 Route::post('/Login', [AuthController::class, 'login']);
-Route::get('/userChangePhoto', [UserController::class, 'userChangePhoto']);
+
+Route::post('/ChangeFileUser/{id}', [FileController::class, 'ChangeFileUser']);
+Route::get('/DownLoadFileUser/{id}', [FileController::class, 'DownLoadFileUser']);
 
 Route::apiResource('/User', UserController::class)->except(['index, show']);
-
 Route::apiResource('/Animal', AnimalController::class)->except(['index, show']);
-
 Route::apiResource('/Clinic', ClinicController::class)->except(['index, show']);
-
 Route::apiResource('/Doctor', DoctorController::class)->except(['index, show']);
-
 Route::apiResource('/Time', TimeOfReceiptController::class)->except(['index, show']);
-
 Route::apiResource('/Service', ServiceController::class)->except(['index, show']);
-
 Route::apiResource('/Render', RenderServiceController::class)->except(['index, show']);
 
 // Protected routes
@@ -56,8 +53,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/RenderRestore/{id}', [RenderServiceController::class, 'restore']);
 });
 
-
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
