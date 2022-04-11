@@ -12,7 +12,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'URL_Picture' => 'https://fgmo.info/wp-content/uploads/2019/03/51_2DP.jpg',
+            'photo_id' => 'https://fgmo.info/wp-content/uploads/2019/03/51_2DP.jpg',
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
