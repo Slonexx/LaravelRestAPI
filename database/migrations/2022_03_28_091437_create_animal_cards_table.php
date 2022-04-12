@@ -14,7 +14,8 @@ class CreateAnimalCardsTable extends Migration
             $table->string('Nickname_Animal');
             $table->string('Type_Animal');
             $table->string('Age_Animal',3);
-            $table->foreignId('User_id')->constrained();
+            $table->unsignedBigInteger('User_id')->nullable();
+            $table->foreign('User_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
