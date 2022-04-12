@@ -14,10 +14,19 @@ class CreateRenderServicesTable extends Migration
             $table->string('Diagnosis');
             $table->string('Appointment');
             $table->string('Add_Info');
-            $table->foreignId('Animal_Cards_id')->constrained();
-            $table->foreignId('Service_id')->constrained();
-            $table->foreignId('Doctor_id')->constrained();
-            $table->foreignId('Time_Of_Receipts_id')->constrained();
+
+            $table->unsignedBigInteger('Animal_Cards_id')->nullable();
+            $table->foreign('Animal_Cards_id')->references('id')->on('animal_cards');
+
+            $table->unsignedBigInteger('Service_id')->nullable();
+            $table->foreign('Service_id')->references('id')->on('services');
+
+            $table->unsignedBigInteger('Doctor_id')->nullable();
+            $table->foreign('Doctor_id')->references('id')->on('doctors');
+
+            $table->unsignedBigInteger('Time_Of_Receipts_id')->nullable();
+            $table->foreign('Time_Of_Receipts_id')->references('id')->on('time_of_receipts');
+
             $table->softDeletes();
             $table->timestamps();
         });

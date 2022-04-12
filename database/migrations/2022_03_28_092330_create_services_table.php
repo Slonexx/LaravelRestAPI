@@ -13,7 +13,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('Name_Service');
             $table->string('Descriptions');
-            $table->foreignId('Clinic_id')->constrained();
+            $table->unsignedBigInteger('Clinic_id')->nullable();
+            $table->foreign('Clinic_id')->references('id')->on('clinics');
             $table->timestamps();
         });
     }
