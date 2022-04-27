@@ -13,7 +13,7 @@ class CreateDoctorsTable extends Migration
             $table->id();
             $table->string('Name_Doctor');
             $table->string('Speciality');
-            $table->string('URL_Picture');
+            $table->string('photo_id');
             $table->unsignedBigInteger('Clinic_id')->nullable();
             $table->foreign('Clinic_id')->references('id')->on('clinics');
             $table->softDeletes();

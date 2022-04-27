@@ -13,9 +13,13 @@ class Doctor extends Model
     protected $fillable = [
         'Name_Doctor',
         'Speciality',
-        'URL_Picture',
+        'photo_id',
         'Clinic_id',
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function ServiceList(){
+        return $this->hasMany(Service::class);
+    }
 }

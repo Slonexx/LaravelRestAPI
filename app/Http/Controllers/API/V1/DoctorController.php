@@ -22,14 +22,12 @@ class DoctorController extends Controller
         $fields = $request->validate([
             'Name_Doctor' => 'required|string',
             'Speciality' => 'required|string',
-            'URL_Picture' => 'required|string',
             'Clinic_id' => 'required|string'
         ]);
 
         $store = Doctor::create([
             'Name_Doctor' => $fields['Name_Doctor'],
             'Speciality' => $fields['Speciality'],
-            'URL_Picture' => $fields['URL_Picture'],
             'Clinic_id' => $fields['Clinic_id']
         ]);
         return response()->json(
@@ -49,14 +47,12 @@ class DoctorController extends Controller
         $fields = $request->validate([
             'Name_Doctor' => 'required|string',
             'Speciality' => 'required|string',
-            'URL_Picture' => 'required|string',
             'Clinic_id' => 'required|string'
         ]);
 
         $store = Doctor::update([
             'Name_Doctor' => $fields['Name_Doctor'],
             'Speciality' => $fields['Speciality'],
-            'URL_Picture' => $fields['URL_Picture'],
             'Clinic_id' => $fields['Clinic_id']
         ]);
         return response()->json(

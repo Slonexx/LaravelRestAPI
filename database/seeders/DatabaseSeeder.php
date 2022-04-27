@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         AnimalCard::factory(20)->create();
-         $this->call(AllSeeder::class);
+        $this->call(AllSeeder::class);
         Doctor::factory(10)->create();
+        $this->call(ServiceSeeder::class);
     }
 }

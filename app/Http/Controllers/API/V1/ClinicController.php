@@ -22,13 +22,11 @@ class ClinicController extends Controller
         $fields = $request->validate([
             'Name_Clinic' => 'required|string',
             'Address' => 'required|string',
-            'URL_Picture' => 'required|string',
         ]);
 
         $store = Clinic::create([
             'Name_Clinic' => $fields['Name_Clinic'],
             'Address' => $fields['Address'],
-            'URL_Picture' => $fields['URL_Picture'],
         ]);
         return response()->json(
             [
@@ -49,13 +47,11 @@ class ClinicController extends Controller
         $fields = $request->validate([
             'Name_Clinic' => 'required|string',
             'Address' => 'required|string',
-            'URL_Picture' => 'required|string'
         ]);
 
         $update->update([
             'Name_Clinic' => $fields['Name_Clinic'],
             'Address' => $fields['Address'],
-            'URL_Picture' => $fields['URL_Picture']
         ]);
 
         return response()->json([

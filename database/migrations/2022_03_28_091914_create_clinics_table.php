@@ -13,7 +13,7 @@ class CreateClinicsTable extends Migration
             $table->id();
             $table->string('Name_Clinic');
             $table->string('Address');
-            $table->string('URL_Picture');
+            $table->string('photo_id')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
         });

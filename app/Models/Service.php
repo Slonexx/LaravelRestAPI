@@ -13,7 +13,7 @@ class Service extends Model
     protected $fillable = [
         'Name_Service',
         'Descriptions',
-        'Clinic_id',
+        'Doctor_id',
     ];
 
     protected $dates = ['deleted_at'];

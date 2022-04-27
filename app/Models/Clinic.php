@@ -13,7 +13,7 @@ class Clinic extends Model
     protected $fillable = [
         'Name_Clinic',
         'Address',
-        'URL_Picture',
+        'photo_id',
     ];
 
     protected $dates = ['deleted_at'];
@@ -21,7 +21,5 @@ class Clinic extends Model
     public function DoctorList(){
         return $this->hasMany(Doctor::class);
     }
-    public function ServiceList(){
-        return $this->hasMany(Service::class);
-    }
+
 }

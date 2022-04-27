@@ -12,9 +12,8 @@ class ClinicResource extends JsonResource
             'id' => $this->id,
             'Name_Clinic' => $this->Name_Clinic,
             'Address' => $this->Address,
-            'URL_Picture' => $this->URL_Picture,
+            'photo_id' => $this->photo_id,
             'Doctors' => DoctorResource::collection($this->DoctorList),
-            'Service' => ServiceResource::collection($this->ServiceList),
         ];
     }
 }
