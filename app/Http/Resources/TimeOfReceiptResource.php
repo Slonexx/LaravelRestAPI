@@ -13,6 +13,7 @@ class TimeOfReceiptResource extends JsonResource
             'id' => $this->id,
             'Receipt_Date' => $this->Receipt_Date,
             'Time' => $this->Time,
+            'Doctor_id' => $this->Doctor_id,
         ];
     }
 }

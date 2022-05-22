@@ -14,8 +14,8 @@ class CreateDoctorsTable extends Migration
             $table->string('Name_Doctor');
             $table->string('Speciality');
             $table->string('photo_id');
-            $table->unsignedBigInteger('Clinic_id')->nullable();
-            $table->foreign('Clinic_id')->references('id')->on('clinics');
+            $table->unsignedBigInteger('Service_id')->nullable();
+            $table->foreign('Service_id')->references('id')->on('services');
             $table->softDeletes();
             $table->timestamps();
         });

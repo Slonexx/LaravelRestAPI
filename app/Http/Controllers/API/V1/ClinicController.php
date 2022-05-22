@@ -56,7 +56,7 @@ class ClinicController extends Controller
 
         return response()->json([
             'message' => 'update Clinic!',
-            'Clinic' => $update
+            'Clinic' => new ClinicResource($update)
         ], 201);
     }
 

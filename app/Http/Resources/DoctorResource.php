@@ -14,8 +14,8 @@ class DoctorResource extends JsonResource
             'Name_Doctor' => $this->Name_Doctor,
             'Speciality' => $this->Speciality,
             'photo_id' => $this->photo_id,
-            'Clinic_id' => $this->Clinic_id,
-            'Service' => ServiceResource::collection($this->ServiceList),
+            'Service_id' => $this->Service_id,
+            'Time' => TimeOfReceiptResource::collection($this->TimeList),
         ];
     }
 }

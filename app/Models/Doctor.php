@@ -14,12 +14,12 @@ class Doctor extends Model
         'Name_Doctor',
         'Speciality',
         'photo_id',
-        'Clinic_id',
+        'Service_id',
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function ServiceList(){
-        return $this->hasMany(Service::class);
+    public function TimeList(){
+        return $this->hasMany(TimeOfReceipt::class);
     }
 }

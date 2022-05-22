@@ -44,13 +44,14 @@ class DoctorController extends Controller
 
     public function update(Request $request, $id)
     {
+        $update = Doctor::findOrFail($id);
         $fields = $request->validate([
             'Name_Doctor' => 'required|string',
             'Speciality' => 'required|string',
             'Clinic_id' => 'required|string'
         ]);
 
-        $store = Doctor::update([
+        $update->update([
             'Name_Doctor' => $fields['Name_Doctor'],
             'Speciality' => $fields['Speciality'],
             'Clinic_id' => $fields['Clinic_id']
@@ -58,7 +59,7 @@ class DoctorController extends Controller
         return response()->json(
             [
                 'message' => 'update Doctor!',
-                'Doctor' => $store
+                'Doctor' => new DoctorResource($update)
             ],201);
     }
 

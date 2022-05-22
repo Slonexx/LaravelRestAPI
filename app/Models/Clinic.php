@@ -18,8 +18,8 @@ class Clinic extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function DoctorList(){
-        return $this->hasMany(Doctor::class);
+    public function ServiceList(){
+        return $this->hasMany(Service::class);
     }
 
 }

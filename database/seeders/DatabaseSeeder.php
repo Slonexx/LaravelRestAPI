@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Doctor;
+use App\Models\TimeOfReceipt;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 use  \App\Models\AnimalCard;
@@ -12,10 +13,11 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        User::factory(10)->create();
-        AnimalCard::factory(20)->create();
+        User::factory(4)->create();
+        AnimalCard::factory(6)->create();
         $this->call(AllSeeder::class);
-        Doctor::factory(10)->create();
         $this->call(ServiceSeeder::class);
+        Doctor::factory(21)->create();
+        TimeOfReceipt::factory(50)->create();
     }
 }

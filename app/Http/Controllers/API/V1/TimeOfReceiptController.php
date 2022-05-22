@@ -22,11 +22,14 @@ class TimeOfReceiptController extends Controller
         $fields = $request->validate([
             'Receipt_Date' => 'required|string',
             'Time' => 'required|string',
+            'Doctor_id' => 'required|string',
+
         ]);
 
         $store = TimeOfReceipt::create([
             'Receipt_Date' => $fields['Receipt_Date'],
             'Time' => $fields['Time'],
+            'Doctor_id' => $fields['Doctor_id'],
         ]);
         return response()->json(
             [
@@ -42,19 +45,20 @@ class TimeOfReceiptController extends Controller
 
     public function update(Request $request, $id)
     {
+        $update = TimeOfReceipt::findOrFail($id);
         $fields = $request->validate([
             'Receipt_Date' => 'required|string',
             'Time' => 'required|string',
         ]);
 
-        $store = TimeOfReceipt::update([
+        $update->update([
             'Receipt_Date' => $fields['Receipt_Date'],
             'Time' => $fields['Time'],
         ]);
         return response()->json(
             [
                 'message' => 'update Time Of Receipt!',
-                'Time Of Receipt' => $store
+                'Time Of Receipt' => new TimeOfReceiptResource($update)
             ],201);
     }
 

@@ -13,7 +13,7 @@ class AnimalCardFactory extends Factory
                 'Nickname_Animal' => $this->faker->firstName(),
                 'Type_Animal' => 'Кот',
                 'Age_Animal' => mt_rand(1, 10),
-                'User_id' => mt_rand(1, 10),
+                'User_id' => mt_rand(1, 4),
 
             ];
     }

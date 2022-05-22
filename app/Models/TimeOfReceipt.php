@@ -13,6 +13,7 @@ class TimeOfReceipt extends Model
     protected $fillable = [
         'Receipt_Date',
         'Time',
+        'Doctor_id',
     ];
 
     protected $dates = ['deleted_at'];

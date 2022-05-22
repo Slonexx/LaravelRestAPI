@@ -11,8 +11,10 @@ class CreateTimeOfReceiptsTable extends Migration
     {
         Schema::create('time_of_receipts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('Doctor_id')->nullable();
+            $table->foreign('Doctor_id')->references('id')->on('doctors');
             $table->date('Receipt_Date');
-            $table->string('Time',10);
+            $table->time('Time');
             $table->softDeletes();
             $table->timestamps();
         });
