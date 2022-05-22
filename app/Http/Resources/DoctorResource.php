@@ -13,7 +13,6 @@ class DoctorResource extends JsonResource
             'id' => $this->id,
             'Name_Doctor' => $this->Name_Doctor,
             'Speciality' => $this->Speciality,
-            'photo_id' => $this->photo_id,
             'Service_id' => $this->Service_id,
             'Time' => TimeOfReceiptResource::collection($this->TimeList),
         ];

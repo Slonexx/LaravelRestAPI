@@ -18,11 +18,9 @@ Route::post('/Login', [AuthController::class, 'login']);
 
 Route::post('/ChangeFileUser/{id}', [FileController::class, 'ChangeFileUser']);
 Route::post('/ChangeFileClinic/{id}', [FileController::class, 'ChangeFileClinic']);
-Route::post('/ChangeFileDoctor/{id}', [FileController::class, 'ChangeFileDoctor']);
 
 Route::get('/DownLoadFileUser/{id}', [FileController::class, 'DownLoadFileUser']);
 Route::get('/DownLoadFileClinic/{id}', [FileController::class, 'DownLoadFileClinic']);
-Route::get('/DownLoadFileDoctor/{id}', [FileController::class, 'DownLoadFileDoctor']);
 
 Route::apiResource('/User', UserController::class)->except(['index, show']);
 Route::apiResource('/Animal', AnimalController::class)->except(['index, show']);
