@@ -37,7 +37,10 @@ class ClinicController extends Controller
 
     public function show($id)
     {
-        return new ClinicResource(Clinic::findOrFail($id));
+        return response()->json(
+            [
+                'Clinic' => new ClinicResource(Clinic::findOrFail($id))
+            ],201);
     }
 
     public function update(Request $request, $id)

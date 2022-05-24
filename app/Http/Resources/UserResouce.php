@@ -15,7 +15,7 @@ class UserResouce extends JsonResource
             'photo_id' => $this->photo_id,
             'phone' => $this->phone,
             'email' => $this->email,
-            'animal_card' => AnimalResouce::collection($this->AnimalList),
+            'Animal' => AnimalResource::collection($this->AnimalList),
         ];
     }
 }

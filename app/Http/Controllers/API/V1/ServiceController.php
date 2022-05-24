@@ -39,7 +39,10 @@ class ServiceController extends Controller
 
     public function show($id)
     {
-        return new ServiceResource(Service::findOrFail($id));
+        return response()->json(
+            [
+                'Service' => new ServiceResource(Service::findOrFail($id))
+            ],201);
     }
 
     public function update(Request $request, $id)

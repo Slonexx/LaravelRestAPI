@@ -40,7 +40,11 @@ class TimeOfReceiptController extends Controller
 
     public function show($id)
     {
-        return new TimeOfReceiptResource(TimeOfReceipt::findOrFail($id));
+        return response()->json(
+            [
+                'Time' =>new TimeOfReceiptResource(TimeOfReceipt::findOrFail($id))
+        ],201);
+
     }
 
     public function update(Request $request, $id)

@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\RenderServices;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AnimalResouce extends JsonResource
+class AnimalResource extends JsonResource
 {
 
     public function toArray($request)
@@ -15,6 +16,7 @@ class AnimalResouce extends JsonResource
             'Type_Animal' => $this->Type_Animal,
             'Age_Animal' => $this->Age_Animal,
             'User_id' => $this->User_id,
+            'Render' => RenderServiceResource::collection($this->RenderList),
         ];
     }
 }

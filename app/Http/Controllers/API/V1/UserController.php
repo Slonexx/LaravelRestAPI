@@ -23,7 +23,10 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return new UserResouce(User::findOrFail($id));
+        return response()->json(
+            [
+                'User' =>new UserResouce(User::findOrFail($id))
+            ],201);
     }
 
     public function update(Request $request, $id)

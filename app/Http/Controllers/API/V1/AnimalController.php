@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AnimalResouce;
+use App\Http\Resources\AnimalResource;
 use App\Models\AnimalCard;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ class AnimalController extends Controller
     public function index()
     {
         return response()->json([
-            'Animal' => AnimalResouce::collection(AnimalCard::all())
+            'Animal' => AnimalResource::collection(AnimalCard::all())
         ],200);
     }
 
@@ -40,7 +40,10 @@ class AnimalController extends Controller
 
     public function show($id)
     {
-        return new AnimalResouce(AnimalCard::findOrFail($id));
+        return response()->json(
+            [
+                'Animal' => new AnimalResource(AnimalCard::findOrFail($id))
+            ],201);
     }
 
     public function update(Request $request, $id)

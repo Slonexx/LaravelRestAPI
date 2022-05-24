@@ -17,23 +17,25 @@ class RenderServiceController extends Controller
         ],200);
     }
 
+    public function OrderBy()
+    {
+        $posts = RenderServices::orderBy('id', 'DESC')->get();
+        return response()->json([
+            'Render' => RenderServiceResource::collection($posts)
+        ],200);
+    }
+
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'Diagnosis' => 'required|string',
-            'Appointment' => 'required|string',
-            'Add_Info' => 'required|string',
-            'Animal_Cards_id' => 'required|string',
+            'Animal_card_id' => 'required|string',
             'Service_id' => 'required|string',
             'Doctor_id' => 'required|string',
             'Time_Of_Receipts_id' => 'required|string',
         ]);
 
         $store = RenderServices::create([
-            'Diagnosis' => $fields['Diagnosis'],
-            'Appointment' => $fields['Appointment'],
-            'Add_Info' => $fields['Add_Info'],
-            'Animal_Cards_id' => $fields['Animal_Cards_id'],
+            'Animal_card_id' => $fields['Animal_card_id'],
             'Service_id' => $fields['Service_id'],
             'Doctor_id' => $fields['Doctor_id'],
             'Time_Of_Receipts_id' => $fields['Time_Of_Receipts_id'],

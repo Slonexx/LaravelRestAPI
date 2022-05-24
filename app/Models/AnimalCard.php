@@ -18,4 +18,8 @@ class AnimalCard extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function RenderList(){
+        return $this->hasMany(RenderServices::class);
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Doctor;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ServiceResource extends JsonResource

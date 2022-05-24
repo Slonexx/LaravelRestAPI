@@ -39,7 +39,9 @@ class DoctorController extends Controller
 
     public function show($id)
     {
-        return new DoctorResource(Doctor::findOrFail($id));
+        return response()->json([
+            'Doctor' => DoctorResource::collection(Doctor::all())
+        ],200);
     }
 
     public function update(Request $request, $id)
